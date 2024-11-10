@@ -1,17 +1,16 @@
-This is a code snippet to properly execute the LayoutGroups in reverse order to ensure proper rendering. When multiple nested LayoutGroups need updating, the default system doesn't always refresh them in the correct hierarchical order. It is important to rebuild the layout from the bottom up, since the parent objects will need the size of its children.
-
-This should be used in scenarios where you have nested LayoutGroups and should solve the issue where when you enable/disable a LayoutGroup it fails to work on the first time you toggle the state.
-
----
-
 Have you ever had issues in unity when using multiple LayoutGroups and LayoutRebuilder.ForceRebuildLayoutImmediate() just isn't working? You have to toggle the changes you make twice for it to work, or your UI spends a few frames rearranging itself?
 
+<sup>Yuck, the layout group is all broken with the ContentSizeFitter</sup><br/>
 <img src="https://i.imgur.com/r4Rh0Kp.gif"/>
 
 Look no further. You've run into the issue [many](https://discussions.unity.com/t/layoutgroup-does-not-refresh-in-its-current-frame/656699) and I mean [many](https://discussions.unity.com/t/content-size-fitter-refresh-problem/678806) people have. Well here's a solution.
 # Unity Layout Group Refresher
-
+<sup>Notice how it doesn't break?</sup><br/>
 <img src="https://i.imgur.com/ESMUp8b.gif"/>
+
+This is a code snippet to properly execute the LayoutGroups in reverse order to ensure proper rendering. When multiple nested LayoutGroups need updating, the default system doesn't always refresh them in the correct hierarchical order. It is important to rebuild the layout from the bottom up, since the parent objects will need the size of its children.
+
+This should be used in scenarios where you have nested LayoutGroups and should solve the issue where when you enable/disable a LayoutGroup it fails to work on the first time you toggle the state.
 
 How To Use:
 - Add LayoutGroupRefresher.cs to your project file
