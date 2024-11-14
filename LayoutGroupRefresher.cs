@@ -67,5 +67,8 @@ public class LayoutGroupRefresher
 				LayoutRebuilder.ForceRebuildLayoutImmediate(rectTransform);
 			}
 		}
+		
+		// Force rebuild the root to ensure changes propagate.
+		LayoutRebuilder.ForceRebuildLayoutImmediate(root);
 	}
 }
